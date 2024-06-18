@@ -269,3 +269,6 @@ fabric.properties
 ._.DS_Store
 **/.DS_Store
 **/._.DS_Store
+
+### 알고리즘 돌리기 위한 폴더
+algorithm
