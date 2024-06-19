@@ -12,11 +12,11 @@
 // 연산자 배열이 전부 null이므로
 // 결과 값 Math.abs(-60420) = 60420 출력
 
-// dfs로 풀기
+// 결론 dfs로 풀기
 
 function solution(expression) {
     // 1단계 숫자와 연산자 배열로 분리 => match 함수를 쓰는 법도 있다.
-    const nums = expression.split(/(\D)/).filter(v => /\d/.test(v)).map(Number);
+    const nums = expression.split(/[*+-]/).filter(v => /\d/.test(v)).map(Number);
     const ops = expression.split(/\d+/).filter(v => /\D/.test(v));
     return dfs(nums, ops);
 }
