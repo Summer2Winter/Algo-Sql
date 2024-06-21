@@ -1,0 +1,43 @@
+class Solution {
+    static boolean[] visit;
+    static int[] arr;
+    static int[][] copy;
+    static int answer = 0;
+    public int solution(int k, int[][] dungeons) {
+        
+        visit = new boolean[dungeons.length];
+        arr = new int[dungeons.length];
+        copy = new int[dungeons.length][2];
+        for(int i=0; i<dungeons.length; i++){
+            for(int j=0; j<2; j++){
+                copy[i][j] = dungeons[i][j];
+            }
+        }
+        select_order(0, dungeons.length, k);
+        return answer;
+    }
+    public void select_order(int cnt, int num, int k){
+        if(cnt == num){
+            answer = Math.max(answer, check(num, k));    
+            return;
+        }
+        for(int i=0; i<num; i++){
+            if(visit[i]) continue;
+            visit[i] = true;
+            arr[cnt] = i;
+            select_order(cnt+1, num, k);
+            visit[i] = false;
+        }
+    }
+    public int check(int num, int k){
+        int count = 0;
+        int last = k;
+        for(int i=0; i<num; i++){
+            if(last >= copy[arr[i]][0]){
+                last = last - copy[arr[i]][1];
+                count++;
+            }
+        }
+        return count;
+    }
+}
