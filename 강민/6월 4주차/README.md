@@ -6,6 +6,7 @@
 
 ### 🥔 Algorithm
 - [BOJ 16236 G3: 아기상어](https://www.acmicpc.net/problem/16236)
+- [BOJ 16234 G4: 인구 이동](https://www.acmicpc.net/problem/16234)
 
 
 
