@@ -14,3 +14,4 @@
 ### 🥔 SQL
 - [PG 14485 Lv3: 카테고리 별 도서 판매량 집계하기](https://school.programmers.co.kr/learn/courses/30/lessons/144855)
 - [PG 59044 Lv3: 오랜 기간 보호한 동물(1)](https://school.programmers.co.kr/learn/courses/30/lessons/59044)
+- [PG 131113 Lv3: 조건별로 분류하여 주문상태 출력하기](https://school.programmers.co.kr/learn/courses/30/lessons/131113)
