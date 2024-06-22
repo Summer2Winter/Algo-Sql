@@ -39,3 +39,6 @@ function solution(n, works) {
     // 남은 작업량의 제곱의 합 계산
     return works.reduce((acc, work) => acc + work * work, 0);
 }
+// 추가 합산 후 나누기 해서 균등하게 하는게 안되는 이유 배열의 값이 증가하는 경우가 있음
+
+

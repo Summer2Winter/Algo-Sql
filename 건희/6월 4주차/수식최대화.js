@@ -47,6 +47,7 @@ function dfs(nums, ops) {
         for (let j = 0; j < tempOps.length; j++) {
             if (tempOps[j] === operator) {
                 tempNums[j + 1] = calculate(tempNums[j], tempNums[j + 1], operator);
+                // 수도에서는 전위로 했는데 반복문 구조 상 후위로
                 tempNums[j] = null;
             } else {
                 newOps.push(tempOps[j]);
