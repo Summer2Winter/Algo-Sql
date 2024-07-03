@@ -31,3 +31,8 @@ public class Main {
         System.out.println();
     }
 }
+
+// 오름차순 => Arrays.sort(arr);
+// int[] 를 Integer[] => Arrays.stream(arr).boxed().toArray(Integer[]::new);
+// 내림차순 => Arrays.sort(arr, Collections.reverseOrder());
+// String 정렬 => char[]로 변환후 sort / char[] arr = str.toCharArray(); String str = new  String(arr);
