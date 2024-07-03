@@ -1,31 +1,39 @@
-function solution(a) {
-    const n = a.length;
-    const leftMin = new Array(n);   // 왼쪽에서부터의 최소값을 저장하는 배열
-    const rightMin = new Array(n);  // 오른쪽에서부터의 최소값을 저장하는 배열
-  
-    // 왼쪽과 오른쪽 최소값 배열의 첫 번째와 마지막 요소 초기화
-    leftMin[0] = a[0];
-    rightMin[n - 1] = a[n - 1];
-  
-    // leftMin 배열을 채움 인덱스 i까지 왼쪽에서 발견된 최소값
-    for (let i = 1; i < n; i++) {
-      leftMin[i] = Math.min(leftMin[i - 1], a[i]);
+// 문제에서 대놓고 BFS하라고 정해준 문제
+// 중간에 정지 시킬 조건 도 주어졌다.
+function solution(info, edges) {
+    // 각 노드의 자식 노드를 저장할 그래프 초기화
+    const graph = Array.from({length: info.length}, () => []);
+    // 각 노드의 연결 관계를 그래프에 저장, 햇갈리니까 명확하게 변수 지정
+    edges.forEach(([parent, child]) => {
+        graph[parent].push(child);
+    });
+    // 최대 양의 수를 저장할 변수, 늑대는 bfs에서 따로 저장할거라서 패스
+    let maxSheep = 0;
+
+    // DFS 함수 정의
+    function dfs(current, sheep, wolf, available) {
+        // 현재 노드가 양이면 양의 수 증가, 늑대면 늑대의 수 증가
+        if (info[current] === 0) sheep++;
+        else wolf++;
+        // 문제에서 주어진 백트래킹 조건 => 늑대 수가 양 수 이상이면 종료
+        if (wolf >= sheep) return;
+        // 최대 양의 수 업데이트
+        if (sheep > maxSheep) maxSheep = sheep;
+        // maxSheep = Math.max(maxSheep, sheep);
+        // 다음 방문 가능한 노드들 업데이트
+        let nextAvailable = new Set(available);
+        nextAvailable.delete(current);
+        graph[current].forEach(child => nextAvailable.add(child));
+        
+        // 다음 방문 가능한 노드들에 대해 DFS 수행
+        for (let next of nextAvailable) {
+            dfs(next, sheep, wolf, nextAvailable);
+        }
     }
-  
-    // rightMin 배열을 채움 인덱스 i까지 오른쪽에서 발견된 최소값
-    for (let i = n - 2; i >= 0; i--) {
-      rightMin[i] = Math.min(rightMin[i + 1], a[i]);
-    }
-  
-    let count = 0;
-  
-    // 어떤 풍선이 마지막까지 남을 수 있는지 판단
-    for (let i = 0; i < n; i++) {
-      // 풍선이 자신의 왼쪽 또는 오른쪽 모든 풍선보다 작지 않은 경우만 최후까지 남을 수 있음
-      if ((i === 0 || a[i] > leftMin[i - 1]) && (i === n - 1 || a[i] > rightMin[i + 1])) {
-        continue;
-      }
-      count++;
-    }
-    return count;
-  }
+    // DFS 시작 (루트 노드에서 시작, 초기 가능한 방문 노드는 루트 노드 자식들)
+    let initialAvailable = new Set(graph[0]);
+    initialAvailable.add(0); // 루트 노드도 포함
+    dfs(0, 0, 0, initialAvailable);
+    // 최대 양의 수 반환
+    return maxSheep;
+}
