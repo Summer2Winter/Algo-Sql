@@ -1,3 +1,6 @@
+/*
+    n진수 변환하는 방법: Integer.toString(10진수, n진수)
+ */
 class Solution {
     public String solution(int n, int t, int m, int p) {
         String answer = "";
