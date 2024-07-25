@@ -1,0 +1,81 @@
+// Java
+class Solution {
+    boolean solution(String s) {
+        // Ver.3 regex
+        class Solution {
+    boolean solution(String s) {
+        // 특정 문자의 발생 횟수를 정규표현식을 사용하여 계산합니다.
+        int countP = countOccurrences(s, "p");
+        int countY = countOccurrences(s, "y");
+        
+        // 'p'와 'y'의 개수가 같으면 true, 다르면 false를 반환합니다.
+        return countP == countY;
+    }
+    
+    // 주어진 문자열에서 특정 문자의 발생 횟수를 계산하는 메서드입니다.
+    private int countOccurrences(String s, String ch) {
+        // 정규표현식을 컴파일합니다. Pattern.CASE_INSENSITIVE 플래그를 사용하여 대소문자를 구분하지 않습니다.
+        Pattern pattern = Pattern.compile(ch, Pattern.CASE_INSENSITIVE);
+        
+        // 문자열 s에서 패턴을 찾기 위해 Matcher 객체를 생성합니다.
+        Matcher matcher = pattern.matcher(s);
+        
+        int count = 0;
+        // matcher.find()는 패턴이 일치하는 부분을 찾을 때마다 true를 반환합니다.
+        while (matcher.find()) {
+            count++;  // 일치하는 부분이 있을 때마다 count를 증가시킵니다.
+        }
+        
+        return count;  // 최종적으로 발생 횟수를 반환합니다.
+    }
+}
+        // Ver.2
+        
+        int countP = 0;
+        int countY = 0;
+        
+        s = s.toLowerCase();
+        for (char ch : s.toCharArray()) {
+            if (ch == 'p') {
+                countP++;
+            } else if (ch == 'y') {
+                countY++;
+            }
+        }
+        return countP == countY;
+        // Ver.1
+        // String[] tmp = s.split("");
+        // int countP = 0;
+        // int countY = 0;
+        // for(String el : tmp){
+        //     if(el.equals("p") || el.equals("P")){
+        //         countP++;
+        //     } else if(el.equals("y") || el.equals("Y")){
+        //         countY++;
+        //     } 
+        // }
+        // if(countP != countY){
+        //     return false;
+        // }else{
+        //     return true;
+        // }
+    }
+}
+// JavaScript
+function solution(s){
+    let count = [0,0];
+    for(let el of s){
+        if(el === "y" || el === "Y"){
+            count[0]++;
+        }else if(el === "p" || el === "P"){
+            count[1]++;
+        }
+    }
+    return (count[0]!=count[1]) ? false : true;
+}
+//regex
+function solution(s){
+    let p = s.match(/p/gi) ? s.match(/p/gi).length : 0;
+    let y = s.match(/y/gi) ? s.match(/y/gi).length : 0;
+    return p != y ? false : true;
+}
