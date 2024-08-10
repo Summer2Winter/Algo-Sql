@@ -21,7 +21,7 @@ class Solution {
             parent[i] = i;
         }
         Arrays.sort(costs, (o1, o2) -> o1[2] - o2[2]);
-        //Kruskal Algorithm
+        //Kruskal
         for(int i = 0; i < costs.length; i++) {
             if(find(costs[i][0]) != find(costs[i][1])) {
                 union(costs[i][0], costs[i][1]);
