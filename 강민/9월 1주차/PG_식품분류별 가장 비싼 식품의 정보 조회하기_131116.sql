@@ -1,0 +1,11 @@
+SELECT CATEGORY, PRICE MAX_PRICE, PRODUCT_NAME
+FROM FOOD_PRODUCT
+WHERE (CATEGORY, PRICE) in (
+    SELECT CATEGORY, MAX(PRICE)
+    FROM FOOD_PRODUCT
+    GROUP BY CATEGORY
+    HAVING CATEGORY IN ('과자', '국', '김치', '식용유')
+)
+ORDER BY PRICE desc
+
+# GROUP BY와 MAX(PRICE)를 사용하면 그룹 내에서 가장 높은 가격은 얻을 수 있지만, 그와 함께 해당 가격에 해당하는 PRODUCT_NAME을 직접 가져올 수는 없다.
