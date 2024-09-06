@@ -1,0 +1,7 @@
+SELECT AD.APNT_NO, AD.PT_NAME, AD.PT_NO, D.MCDP_CD, D.DR_NAME, AD.APNT_YMD
+FROM (
+        SELECT A.APNT_NO, P.PT_NAME, P.PT_NO, A.MDDR_ID, A.APNT_YMD
+        FROM APPOINTMENT A inner join PATIENT P on A.PT_NO = P.PT_NO
+        WHERE date_format(A.APNT_YMD, '%Y-%m-%d') = '2022-04-13' and A.MCDP_CD = 'CS' and A.APNT_CNCL_YN != 'Y'
+    ) AD inner join DOCTOR D on AD.MDDR_ID = D.DR_ID
+order by AD.APNT_YMD
