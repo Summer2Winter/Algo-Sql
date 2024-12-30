@@ -18,7 +18,6 @@ class Solution {
                 mapB.put(value, 1);
             }
         }
-
         // 2분할
         for(int value : topping) {
             //A에 추가
