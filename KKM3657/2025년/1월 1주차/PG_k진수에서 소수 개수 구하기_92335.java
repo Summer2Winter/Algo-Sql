@@ -30,7 +30,7 @@ class Solution {
 }
 
 /*
-BigInteger 사용 방법
+// BigInteger 사용 방법
 import java.math.BigInteger;
 
 class Solution {
