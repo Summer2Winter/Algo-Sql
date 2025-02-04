@@ -50,3 +50,41 @@ public class Main {
         System.out.println(answer);
     }
 }
+
+//// 방법2.
+//import java.io.BufferedReader;
+//import java.io.InputStreamReader;
+//import java.io.IOException;
+//import java.util.StringTokenizer;
+//import java.util.ArrayDeque;
+//
+//public class Main {
+//    public static void main(String[] args) throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//
+//        String input = br.readLine();
+//        StringTokenizer plus = new StringTokenizer(input, "-");
+//
+//        ArrayDeque<Integer> queue = new ArrayDeque<>();
+//        while(plus.hasMoreTokens()) {
+//            // + 계산
+//            String[] number = plus.nextToken().split("\\+");
+//            if(number.length == 1)
+//                queue.add(Integer.parseInt(number[0]));
+//            else {
+//                int sum = 0;
+//                for(String value : number) {
+//                    sum += Integer.parseInt(value);
+//                }
+//                // 계산
+//                queue.add(sum);
+//            }
+//        }
+//        // 순서대로 계산하기
+//        int answer = queue.pollFirst();
+//        while(!queue.isEmpty()) {
+//            answer -= queue.pollFirst();
+//        }
+//        System.out.println(answer);
+//    }
+//}
