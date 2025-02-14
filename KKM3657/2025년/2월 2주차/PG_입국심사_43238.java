@@ -4,7 +4,6 @@ class Solution {
     public long solution(int n, int[] times) {
         long answer = Long.MAX_VALUE;
         Arrays.sort(times);
-
         long left = 0;
         long right = (long) n * times[times.length - 1]; // 가장 오래 걸리는 시간
 
