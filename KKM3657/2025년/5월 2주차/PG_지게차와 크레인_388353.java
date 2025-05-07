@@ -73,15 +73,6 @@ class Solution {
                 }
             }
         }
-        // for(int i=0; i<=n+1; i++) {
-        //     for(int j=0; j<=m+1; j++) {
-        //         if(map[i][j] == '\0')
-        //             System.out.print(" ");
-        //         else
-        //             System.out.print(map[i][j]);
-        //     }
-        //     System.out.println();
-        // }
         // 남는 화물 갯수
         return answer;
     }
